@@ -1,0 +1,11 @@
+[package]
+name = "rust-hole-punch"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+publish = false
+
+[dependencies]
+hmac = "0.13"
+rand = "0.10"
+sha2 = "0.11"
