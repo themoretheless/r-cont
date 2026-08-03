@@ -1,0 +1,23 @@
+name: Copilot Review
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions: {}
+
+jobs:
+  review:
+    if: ${{ github.event.pull_request.draft == false }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pull-requests: write
+
+    steps:
+      - name: Request and collect Copilot review
+        uses: themoretheless/.github/.github/actions/copilot-review@03333cf03e343cd096218e8df076a3c3fa097c49 # v1
+        with:
+          github-token: ${{ github.token }}
+          # Copilot always emits an overview body; gate only actionable inline comments.
+          fail-on-comments: true
