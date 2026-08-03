@@ -16,7 +16,8 @@ jobs:
 
     steps:
       - name: Request and collect Copilot review
-        uses: themoretheless/.github/.github/actions/copilot-review@bb3377f2f424201379ab4e47e147f164f4014b38 # v1
+        uses: themoretheless/.github/.github/actions/copilot-review@03333cf03e343cd096218e8df076a3c3fa097c49 # v1
         with:
           github-token: ${{ github.token }}
+          # Copilot always emits an overview body; gate only actionable inline comments.
           fail-on-comments: true
